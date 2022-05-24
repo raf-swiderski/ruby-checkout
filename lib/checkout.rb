@@ -28,7 +28,6 @@ class Checkout
         @total = (@total.ceil.to_f / 100)
 
         print_message = "Total price: £#{@total}"
-
         if print_message.split("")[-2] == "."
             print_message += "0"
         end

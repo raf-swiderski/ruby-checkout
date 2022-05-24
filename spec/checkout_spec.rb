@@ -18,13 +18,13 @@ describe Checkout do
         expect(@checkout.total).to eq "Total price: £9.25"
     end
 
-    it "10% discount when spending over £60" do
+    it "has a 10% discount on the total when spending over £60" do
         @checkout.scan(@item_002)
         @checkout.scan(@item_002)
         expect(@checkout.total).to eq "Total price: £81.00"
     end
 
-    it "10% discount when spending over £60" do
+    it "has a 10% discount on the total when spending over £60" do
         @checkout.scan(@item_001)
         @checkout.scan(@item_002)
         @checkout.scan(@item_003)
