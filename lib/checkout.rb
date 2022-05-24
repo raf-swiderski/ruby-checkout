@@ -12,7 +12,13 @@ class Checkout
         if @total == 0 
             return "Total price: £0.00"
         end
-            
+
+        if @total >= 60
+
+            @total = @total * 0.90
+
+        end
+
         return "Total price: £#{@total}"
     end
 
