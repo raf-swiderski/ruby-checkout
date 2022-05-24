@@ -16,7 +16,7 @@ class Checkout
         end
 
         if count_item("Lavender heart") >= 2
-            @total = drop_price_of_item(001, 8.50) # returns new @total
+            drop_price_of_item(001, 8.50)
         end
 
         recalculate_total
@@ -25,9 +25,7 @@ class Checkout
             @total = @total.to_i * 0.90
         end
 
-
-        @total = @total.to_i.round()
-        @total = (@total.to_f / 100)
+        @total = (@total.ceil.to_f / 100)
 
         print_message = "Total price: £#{@total}"
 

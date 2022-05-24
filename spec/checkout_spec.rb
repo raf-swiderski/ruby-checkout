@@ -44,4 +44,21 @@ describe Checkout do
         expect(@checkout.total).to eq "Total price: £36.95"
     end
 
+    it "if you buy 2 or more lavendar hearts the price of them drops to £8.50" do
+        @checkout.scan(@item_001)
+        @checkout.scan(@item_002)
+        @checkout.scan(@item_001)
+        @checkout.scan(@item_003)
+        expect(@checkout.total).to eq "Total price: £73.76"
+    end
+
+    it "items can scan in any order" do
+        @checkout.scan(@item_003)
+        @checkout.scan(@item_001)
+        @checkout.scan(@item_002)
+        @checkout.scan(@item_001)
+        @checkout.scan(@item_003)
+        expect(@checkout.total).to eq "Total price: £91.71"
+    end
+
 end
