@@ -28,7 +28,7 @@ class Checkout
         recalculate_total
 
         # basket promotions
-        basket_discount(0.90, 6000)
+        apply_basket_discount(0.90, 6000)
 
     end 
 
