@@ -32,7 +32,7 @@ class Checkout
 
     end 
 
-    def basket_discount(discount, threshold)
+    def apply_basket_discount(discount, threshold)
         # E.g. '10% off if total is over £60' would be: basket_discount(0.90, 6000)
 
         if @total.floor >= threshold
