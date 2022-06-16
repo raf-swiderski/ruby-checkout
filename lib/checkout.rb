@@ -11,29 +11,34 @@ class Checkout
 
     def total
 
-        if @total == 0 
-            return "Total price: £0.00"
-        end
-
+        
         if count_item("Lavender heart") >= 2
             drop_price_of_item(001, 8.50)
         end
-
+        
         recalculate_total
         
-        if @total.to_i >= 6000 #10% discount if over £60.00
+        if @total.floor >= 6000 #10% discount if over £60.00
             @total = @total.to_i * 0.90
         end
 
         @total = (@total.ceil.to_f / 100)
+        
 
-        print_message = "Total price: £#{@total}"
+        print_message = generate_print_message(@total)
+        return print_message
+
+    end
+
+    def generate_print_message(total)
+        if @total == 0 
+            return "Total price: £0.00"
+        end
+        print_message = "Total price: £#{total}"
         if print_message.split("")[-2] == "."
             print_message += "0"
         end
-
         return print_message
-
     end
 
     def scan(item)
@@ -54,7 +59,7 @@ class Checkout
     def drop_price_of_item(product_code, new_price)
         @items.map do |item|
             if item.product_code == product_code
-                item.price = new_price
+                item.set_price(new_price)
             end
         end   
     end
