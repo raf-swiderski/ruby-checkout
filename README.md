@@ -66,10 +66,9 @@ Run `irb` in the command line, then these lines, one by one:
     - Solution: I timesed the `Item` price by 100 on input, and then divided by 100 when printing out the price. 
 - I didn't pass the `promotional_rules` as an argument but rather I built it into the system, because I wasn't sure how to pass a method as an argument and incorporate this into the business logic.
 
-### Things to improve on 
-
-- Could have been more thorough with my testing when starting out. I was adding features before my code base was solid enough.
-- Try to pass the promotional rules as an argument.
+### Changes after feedback
+- refactored each method in Checkout.rb more singularly responsible and reusable (E.g. the apply_basket_discount method.)
+- encapsulated the Item class attributes so they are no longer accessible outside the class.
 
 
 

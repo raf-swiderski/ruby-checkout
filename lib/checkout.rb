@@ -1,8 +1,11 @@
 require_relative 'item'
+require_relative 'promotions'
 
 class Checkout
-
+    
     attr_reader :total, :items
+    
+    include Promotions
 
     def initialize
         @total = 0
@@ -14,41 +17,9 @@ class Checkout
 
         convert_total_to_float
 
-        print_message = generate_print_message(@total) # E.g. "Total price: £54.29"
+        print_message = generate_print_message(@total) # Format: "Total price: £54.29"
         return print_message
 
-    end
-
-    def apply_promotions
-
-        # item promotions
-        apply_lavender_heart_promotion 
-
-        # update @total 
-        recalculate_total
-
-        # basket promotions
-        apply_basket_discount(0.90, 6000)
-
-    end 
-
-    def apply_basket_discount(discount, threshold)
-        # E.g. '10% off if total is over £60' would be: basket_discount(0.90, 6000)
-
-        if @total.floor >= threshold
-            @total = @total.to_i * discount
-        end
-
-    end
-
-    def apply_lavender_heart_promotion
-        if count_item("Lavender heart") >= 2
-            drop_price_of_item(001, 8.50)
-        end
-    end
-
-    def convert_total_to_float
-        @total = (@total.ceil.to_f / 100)
     end
 
     def generate_print_message(total)
@@ -65,6 +36,10 @@ class Checkout
     def scan(item)
         @total += item.price * 100 # converting the price to a float
         @items << item
+    end
+
+    def delete_item(item)
+        
     end
 
     def count_item(name) 
@@ -91,6 +66,10 @@ class Checkout
             @total += item.price * 100
         end
         return @total
+    end
+
+    def convert_total_to_float
+        @total = (@total.ceil.to_f / 100)
     end
 
 end

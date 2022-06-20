@@ -61,4 +61,5 @@ describe Checkout do
         expect(@checkout.total).to eq "Total price: £91.71"
     end
 
+
 end
