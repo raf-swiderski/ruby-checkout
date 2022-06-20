@@ -17,20 +17,9 @@ class Checkout
 
         convert_total_to_float
 
-        print_message = generate_print_message(@total) # Format: "Total price: £54.29"
+        print_message = generate_print_message(@total) # Format: => "Total price: £54.29"
         return print_message
 
-    end
-
-    def generate_print_message(total)
-        print_message = "Total price: £#{total}"
-        
-        if @total == 0 
-            return "Total price: £0.00"
-        elsif print_message.split("")[-2] == "."
-            print_message += "0"
-        end
-        return print_message
     end
 
     def scan(item)
@@ -44,6 +33,19 @@ class Checkout
                 @items.delete_at(index)
             end
         end
+    end
+
+    private
+
+    def generate_print_message(total)
+        print_message = "Total price: £#{total}"
+        
+        if @total == 0 
+            return "Total price: £0.00"
+        elsif print_message.split("")[-2] == "."
+            print_message += "0"
+        end
+        return print_message
     end
 
     def count_item(name) 
