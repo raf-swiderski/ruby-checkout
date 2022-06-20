@@ -38,8 +38,12 @@ class Checkout
         @items << item
     end
 
-    def delete_item(item)
-        
+    def delete(item)
+        @items.each_with_index do |basket_item, index|
+            if basket_item == item
+                @items.delete_at(index)
+            end
+        end
     end
 
     def count_item(name) 

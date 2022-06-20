@@ -52,6 +52,14 @@ describe Checkout do
         expect(@checkout.total).to eq "Total price: £73.76"
     end
 
+    it "removes the the promotion when you remove a lavendar heart from the basket, taking it below the promotion threshold." do 
+        @checkout.scan(@item_001)
+        @checkout.scan(@item_001)
+        @checkout.delete(@item_001)
+        expect(@checkout.total).to eq "Total price: £9.25"
+
+    end
+
     it "items can scan in any order" do
         @checkout.scan(@item_003)
         @checkout.scan(@item_001)
@@ -60,6 +68,5 @@ describe Checkout do
         @checkout.scan(@item_003)
         expect(@checkout.total).to eq "Total price: £91.71"
     end
-
 
 end
