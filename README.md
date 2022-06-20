@@ -71,6 +71,7 @@ Run `irb` in the command line, then these lines, one by one:
 - encapsulated the Item class attributes so they are no longer accessible outside the class.
 - exctracted the promotions to a separate module to make adding new promotions easier. 
 - added a feature to delete an item from the basket, and it applys the promotions appropriately.
+- separated the tests of the promotions and main checkout. 
 
 
 
