@@ -13,51 +13,9 @@ describe Checkout do
         expect(@checkout.total).to eq "Total price: £0.00"
     end
     
-    it "print out the total when buying item 001" do
+    it "prints out the total when buying item 001" do
         @checkout.scan(@item_001)
         expect(@checkout.total).to eq "Total price: £9.25"
-    end
-
-    it "has a 10% discount on the total when spending over £60" do
-        @checkout.scan(@item_002)
-        @checkout.scan(@item_002)
-        expect(@checkout.total).to eq "Total price: £81.00"
-    end
-
-    it "has a 10% discount on the total when spending over £60" do
-        @checkout.scan(@item_001)
-        @checkout.scan(@item_002)
-        @checkout.scan(@item_003)
-        expect(@checkout.total).to eq "Total price: £66.78"
-    end
-
-    it "if you buy 2 or more lavendar hearts the price of them drops to £8.50" do
-        @checkout.scan(@item_001)
-        @checkout.scan(@item_001)
-        expect(@checkout.total).to eq "Total price: £17.00"
-    end
-
-    it "if you buy 2 or more lavendar hearts the price of them drops to £8.50" do
-        @checkout.scan(@item_001)
-        @checkout.scan(@item_003)
-        @checkout.scan(@item_001)
-        expect(@checkout.total).to eq "Total price: £36.95"
-    end
-
-    it "if you buy 2 or more lavendar hearts the price of them drops to £8.50" do
-        @checkout.scan(@item_001)
-        @checkout.scan(@item_002)
-        @checkout.scan(@item_001)
-        @checkout.scan(@item_003)
-        expect(@checkout.total).to eq "Total price: £73.76"
-    end
-
-    it "removes the the promotion when you remove a lavendar heart from the basket, taking it below the promotion threshold." do 
-        @checkout.scan(@item_001)
-        @checkout.scan(@item_001)
-        @checkout.delete(@item_001)
-        expect(@checkout.total).to eq "Total price: £9.25"
-
     end
 
     it "items can scan in any order" do

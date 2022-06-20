@@ -69,6 +69,8 @@ Run `irb` in the command line, then these lines, one by one:
 ### Changes after feedback
 - refactored each method in Checkout.rb more singularly responsible and reusable (E.g. the apply_basket_discount method.)
 - encapsulated the Item class attributes so they are no longer accessible outside the class.
+- exctracted the promotions to a separate module to make adding new promotions easier. 
+- added a feature to delete an item from the basket, and it applys the promotions appropriately.
 
 
 
