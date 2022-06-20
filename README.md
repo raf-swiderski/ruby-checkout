@@ -47,7 +47,7 @@ Run `irb` in the command line, then these lines, one by one:
 > item_001 = Item.new(001, "Lavender heart", 9.25)
 > item_002 = Item.new(002, "Personalised cufflinks", 45.00)
 > item_003 = Item.new(003, "Kids T-shirt", 19.95)
-> checkout = Checkout.new
+> checkout = Checkout.new(promotional_rules)
 > checkout.scan(item_001)
 > checkout.scan(item_002)
 > checkout.scan(item_003)
@@ -55,16 +55,9 @@ Run `irb` in the command line, then these lines, one by one:
   => "Total price: £66.78"
 ```
 
-
 ### Assumptions
 
 - I assumed the `Lavendar heart` discount would be applied before the `%10` discount.
-
-### Issues
-
-- Trouble with pricing. It was hard performing business logic on floats in Ruby.
-    - Solution: I timesed the `Item` price by 100 on input, and then divided by 100 when printing out the price. 
-- I didn't pass the `promotional_rules` as an argument but rather I built it into the system, because I wasn't sure how to pass a method as an argument and incorporate this into the business logic.
 
 ### Changes after feedback
 - refactored each method in Checkout.rb more singularly responsible and reusable (E.g. the apply_basket_discount method.)
@@ -72,6 +65,12 @@ Run `irb` in the command line, then these lines, one by one:
 - exctracted the promotions to a separate module to make adding new promotions easier. 
 - added a feature to delete an item from the basket, and it applys the promotions appropriately.
 - separated the tests of the promotions and main checkout. 
+- It now takes on promotional rules as a parameter of the checkout, to switch up the promo rules for each checkout. 
+
+
+
+
+
 
 
 

@@ -7,9 +7,14 @@ class Checkout
     
     include Promotions
 
-    def initialize
+    def initialize(promotional_rules = [])
         @total = 0
         @items = []
+        @promotional_rules = promotional_rules
+        @all_promotions = [
+            :lavender_heart_promo,
+            :ten_percent_basket_discount
+        ]
     end
 
     def total

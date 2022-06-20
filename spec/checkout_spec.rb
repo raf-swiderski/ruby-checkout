@@ -3,7 +3,10 @@ require "checkout"
 describe Checkout do
 
     before(:each) do
-        @checkout = Checkout.new
+        @checkout = Checkout.new([
+            :lavender_heart_promo,
+            :ten_percent_basket_discount
+        ])
         @item_001 = Item.new(001, "Lavender heart", 9.25)
         @item_002 = Item.new(002, "Personalised cufflinks", 45.00)
         @item_003 = Item.new(003, "Kids T-shirt", 19.95)
